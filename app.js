@@ -62,3 +62,26 @@ window.addEventListener("scroll", () => {
     });
   }
 });
+emailjs.init({
+  publicKey: "3B1FOmaFdJU7LMeqK",
+});
+
+const form = document.getElementById("contact-form");
+
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  emailjs.sendForm(
+    "service_l0xio3k",
+    "template_t8368ph",
+    form
+  )
+  .then(() => {
+    alert("Message sent successfully!");
+    form.reset();
+  })
+  .catch((error) => {
+    console.error(error);
+    alert("Failed to send message.");
+  });
+});
